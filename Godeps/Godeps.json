@@ -1,0 +1,14 @@
+{
+	"ImportPath": "github.com/codahale/colorbot",
+	"GoVersion": "go1.4.2",
+	"Packages": [
+		"./..."
+	],
+	"Deps": [
+		{
+			"ImportPath": "github.com/soniakeys/quant",
+			"Comment": "v0.2-5-g67a87a0",
+			"Rev": "67a87a04e990dc9790189911a1eddd7723da2a50"
+		}
+	]
+}
