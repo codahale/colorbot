@@ -8,7 +8,9 @@ A Go library which determines the dominant colors in an image.
 To install:
 
 1. Have Go 1.4+ installed.
-2. Run `go get github.com/codahale/colorbot/cmd/...`.
-3. Run `colorbot -h`.
+2. Use [godep](https://github.com/tools/godep).
+3. Run `go get -d github.com/codahale/colorbot`.
+4. Run `cd $GOPATH/github.com/codahale/colorbot && godep go install ./...`
+5. Run `colorbot -h`.
 
 For documentation, check [godoc](http://godoc.org/github.com/codahale/colorbot).
