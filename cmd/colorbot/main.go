@@ -21,10 +21,10 @@ package main
 import (
 	"flag"
 	"fmt"
-	_ "image/gif"
+	_ "image/gif"  // support GIF images
 	_ "image/jpeg" // support JPEG images
 	_ "image/png"  // support PNG images
-	"io"           // support GIF images
+	"io"
 	"net/http"
 	"os"
 	"strings"
