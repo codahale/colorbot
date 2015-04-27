@@ -8,12 +8,12 @@
 //     #f9e2b3
 //     #ffffff
 //
-//     $ curl https://dribbble.com/dribbble-logo.png | colorbot -
+//     $ colorbot https://www.google.com/images/srpr/logo11w.png
 //     #000000
-//     #621131
-//     #c32361
-//     #d83976
-//     #ea4c89
+//     #009553
+//     #0c60a7
+//     #166bed
+//     #c56937
 //
 // Colorbot supports GIF, JPEG, and PNG images.
 package main
@@ -21,10 +21,13 @@ package main
 import (
 	"flag"
 	"fmt"
-	_ "image/gif"  // support GIF images
+	_ "image/gif"
 	_ "image/jpeg" // support JPEG images
 	_ "image/png"  // support PNG images
+	"io"           // support GIF images
+	"net/http"
 	"os"
+	"strings"
 
 	"github.com/codahale/colorbot"
 )
@@ -37,9 +40,17 @@ func main() {
 	)
 	flag.Parse()
 
-	var in *os.File
+	var in io.Reader
 	if s := flag.Args()[0]; s == "-" {
 		in = os.Stdin
+	} else if strings.HasPrefix(s, "http://") || strings.HasPrefix(s, "https://") {
+		resp, err := http.Get(s)
+		if err != nil {
+			panic(err)
+		}
+		defer resp.Body.Close()
+
+		in = resp.Body
 	} else {
 		f, err := os.Open(s)
 		if err != nil {
